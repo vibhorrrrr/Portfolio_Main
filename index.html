@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibhor Joshi | Intelligent Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              'neural': '#00f0ff',
+              'alert': '#ffaa00',
+              'critical': '#ff2a2a',
+              'graphite': '#1a1a1a',
+              'off-white': '#e0e0e0',
+            },
+            backgroundImage: {
+              'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f8fafc;
+        color: #1e293b;
+        overflow-x: hidden;
+        transition: background-color 0.5s ease, color 0.5s ease;
+      }
+      html.dark body {
+        background-color: #050505;
+        color: #e0e0e0;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      html.dark .glass-panel {
+        background: rgba(20, 20, 20, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .scanline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        z-index: 9999;
+        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0,0,0,0) 100%);
+        opacity: 0.1;
+        pointer-events: none;
+        animation: scanline 10s linear infinite;
+      }
+      @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100vh); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "framer-motion": "https://esm.sh/framer-motion@11.0.8?external=react,react-dom",
+    "recharts": "https://esm.sh/recharts@2.12.2?external=react,react-dom",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?external=react,react-dom",
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@0.1.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <div class="scanline"></div>
+    <script type="module" src="./index.tsx"></script>
+  </body>
+</html>
+    
