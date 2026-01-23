@@ -16,6 +16,7 @@ import ScrollProgress from './components/ScrollProgress';
 import AboutSection from './components/AboutSection';
 import ExperienceSection from './components/ExperienceSection';
 import EducationSection from './components/EducationSection';
+import RetroGame from './components/RetroGame';
 
 // Interactive Modules
 import LogisticsVisual from './components/InteractiveModules/LogisticsVisual';
@@ -38,6 +39,9 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [time, setTime] = useState(new Date());
   
+  // Game State
+  const [showGame, setShowGame] = useState(false);
+
   // Lifted Modal State
   const [modalProject, setModalProject] = useState<SystemProject | null>(null);
 
@@ -53,12 +57,12 @@ const App: React.FC = () => {
 
   // Handle Scroll Lock
   useEffect(() => {
-    if (isSystemLocked) {
+    if (isSystemLocked || showGame || modalProject) {
         document.body.style.overflow = 'hidden';
     } else {
         document.body.style.overflow = 'auto';
     }
-  }, [isSystemLocked]);
+  }, [isSystemLocked, showGame, modalProject]);
 
   // Live Clock
   useEffect(() => {
@@ -105,7 +109,7 @@ const App: React.FC = () => {
   // Keyboard Navigation Controller
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-        if (isSystemLocked) return;
+        if (isSystemLocked || showGame) return;
 
         // Ignore if focus is on an input or if modal is open (unless it's Escape)
         if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) return;
@@ -161,7 +165,7 @@ const App: React.FC = () => {
         window.addEventListener('keydown', handleKeyDown);
     }
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [booted, activeSection, modalProject, handleNavigate, isSystemLocked]);
+  }, [booted, activeSection, modalProject, handleNavigate, isSystemLocked, showGame]);
 
   return (
     <>
@@ -179,7 +183,7 @@ const App: React.FC = () => {
           <SystemTelemetry />
           <ThemeToggle isDark={theme === 'dark'} toggle={toggleTheme} />
           
-          {!isSystemLocked && <Sidebar activeId={activeSection} onNavigate={handleNavigate} />}
+          {!isSystemLocked && <Sidebar activeId={activeSection} onNavigate={handleNavigate} onOpenGame={() => setShowGame(true)} />}
           
           <div className={isSystemLocked ? 'relative z-10' : 'lg:pl-64 relative z-10'}>
             <Hero onEnter={() => setIsSystemLocked(false)} />
@@ -256,12 +260,18 @@ const App: React.FC = () => {
 
           </div>
           
+          {/* Modals */}
           <Modal 
             isOpen={!!modalProject} 
             onClose={() => setModalProject(null)} 
             title={modalProject?.title || ''}
             techStack={modalProject?.techStack || []}
           />
+          
+          <AnimatePresence>
+            {showGame && <RetroGame onClose={() => setShowGame(false)} />}
+          </AnimatePresence>
+
         </main>
       )}
     </>

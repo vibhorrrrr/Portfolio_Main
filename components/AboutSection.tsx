@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Shield, Cpu, Globe, MapPin, Zap } from 'lucide-react';
+import { Terminal, Shield, Cpu, Globe, MapPin, Zap, ScanFace, Fingerprint } from 'lucide-react';
 
 const AboutSection: React.FC = () => {
   return (
@@ -35,37 +35,75 @@ const AboutSection: React.FC = () => {
             <div className="lg:col-span-4">
                 <div className="sticky top-32">
                     <div className="relative bg-white dark:bg-neutral-900/50 border border-slate-200 dark:border-neutral-800 p-1 backdrop-blur-sm">
-                        {/* Holographic Wireframe Placeholder */}
-                        <div className="h-64 bg-slate-100 dark:bg-black border border-slate-100 dark:border-neutral-800 relative overflow-hidden flex items-center justify-center group">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-50"></div>
+                        
+                        {/* HOLOGRAPHIC AVATAR CONTAINER */}
+                        <div className="h-64 bg-slate-50 dark:bg-black border border-slate-200 dark:border-neutral-800 relative overflow-hidden group flex items-center justify-center">
                             
-                            {/* Animated Abstract Shape */}
-                            <div className="relative w-32 h-32">
+                            {/* Inner Grid for Depth */}
+                            <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+                            
+                            {/* Animated Background Gradient */}
+                            <div className="absolute inset-0 bg-radial-gradient from-blue-500/5 to-transparent opacity-50" />
+
+                            {/* Central Rotating Elements */}
+                            <div className="relative z-10 flex items-center justify-center w-full h-full">
+                                {/* Outer Dashed Ring */}
                                 <motion.div 
-                                    className="absolute inset-0 border border-blue-500 dark:border-neural opacity-30 rounded-full"
-                                    animate={{ rotateX: 180, rotateY: 180 }}
-                                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                                />
-                                <motion.div 
-                                    className="absolute inset-2 border border-purple-500 opacity-30 rounded-full"
-                                    animate={{ rotateX: -180, rotateY: 90 }}
-                                    transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-                                />
-                                <motion.div 
-                                    className="absolute inset-8 border border-amber-500 dark:border-alert opacity-30"
                                     animate={{ rotate: 360 }}
-                                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                    className="absolute w-40 h-40 border-2 border-dashed border-blue-400/20 dark:border-neural/20 rounded-full"
                                 />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-2 h-2 bg-blue-600 dark:bg-white rounded-full animate-pulse shadow-[0_0_15px_currentColor]" />
+                                {/* Middle Dotted Ring (Counter-Rotate) */}
+                                <motion.div 
+                                    animate={{ rotate: -360 }}
+                                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                    className="absolute w-32 h-32 border border-blue-500/20 dark:border-neural/20 rounded-full opacity-70"
+                                />
+                                {/* Inner Solid Ring Pulse */}
+                                <motion.div 
+                                    animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.6, 0.3] }}
+                                    transition={{ duration: 3, repeat: Infinity }}
+                                    className="absolute w-24 h-24 border border-blue-400/40 dark:border-neural/40 rounded-full"
+                                />
+                                
+                                {/* Center Icon */}
+                                <motion.div
+                                    initial={{ opacity: 0.6 }}
+                                    animate={{ opacity: [0.6, 1, 0.6] }}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                    className="text-blue-500/50 dark:text-neural/50"
+                                >
+                                    <ScanFace size={56} strokeWidth={1} />
+                                </motion.div>
+
+                                {/* Floating Data Points */}
+                                <div className="absolute top-6 right-6 flex flex-col items-end gap-1 pointer-events-none">
+                                     <span className="text-[8px] font-mono text-blue-400 dark:text-neural opacity-60">ID: VJ-9920</span>
+                                     <span className="text-[8px] font-mono text-blue-400 dark:text-neural opacity-60">SEC: L4-ALPHA</span>
+                                </div>
+                                <div className="absolute bottom-6 right-6 flex flex-col items-end gap-1 pointer-events-none">
+                                     <span className="text-[8px] font-mono text-blue-400 dark:text-neural opacity-60">BIOMETRICS: LOCKED</span>
                                 </div>
                             </div>
 
-                            {/* Corner Markers */}
-                            <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-slate-400 dark:border-neutral-600"></div>
-                            <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-slate-400 dark:border-neutral-600"></div>
-                            <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-slate-400 dark:border-neutral-600"></div>
-                            <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-slate-400 dark:border-neutral-600"></div>
+                            {/* Scanning Laser Line */}
+                            <motion.div 
+                                className="absolute left-0 w-full h-[2px] bg-blue-500/50 dark:bg-neural/50 shadow-[0_0_15px_rgba(59,130,246,0.5)] dark:shadow-[0_0_15px_rgba(0,240,255,0.5)] z-20"
+                                animate={{ top: ["0%", "100%", "0%"] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                            />
+                            
+                            {/* Tech Markers (Corners) */}
+                            <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-blue-300 dark:border-neutral-700"></div>
+                            <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-blue-300 dark:border-neutral-700"></div>
+                            <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-blue-300 dark:border-neutral-700"></div>
+                            <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-blue-300 dark:border-neutral-700"></div>
+
+                            {/* Status Indicator inside frame */}
+                            <div className="absolute bottom-3 left-3 flex items-center gap-2 z-20">
+                                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.8)]"></div>
+                                <span className="text-[9px] font-mono text-slate-500 dark:text-neutral-500 uppercase tracking-wider">Uplink: Secure</span>
+                            </div>
                         </div>
 
                         {/* ID Details */}
@@ -73,7 +111,7 @@ const AboutSection: React.FC = () => {
                             <div>
                                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans tracking-tight">Vibhor Joshi</h3>
                                 <div className="flex items-center gap-2 mt-1">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-neural"></div>
                                     <span className="text-xs font-mono text-slate-500 dark:text-neutral-400 uppercase">Simulation Architect</span>
                                 </div>
                             </div>

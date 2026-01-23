@@ -2,14 +2,15 @@
 import React from 'react';
 import { PROJECTS, SOCIAL_LINKS } from '../constants';
 import { motion } from 'framer-motion';
-import { Linkedin, Github } from 'lucide-react';
+import { Linkedin, Github, Gamepad2 } from 'lucide-react';
 
 interface SidebarProps {
   activeId: string;
   onNavigate: (id: string) => void;
+  onOpenGame: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeId, onNavigate }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activeId, onNavigate, onOpenGame }) => {
   return (
     <div className="hidden lg:flex fixed left-0 top-0 h-screen w-64 flex-col justify-center pl-8 z-40 pointer-events-none">
       <div className="pointer-events-auto flex flex-col h-full py-16">
@@ -45,7 +46,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeId, onNavigate }) => {
           </div>
 
           {/* Social Links at Bottom */}
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
                <a 
                  href={SOCIAL_LINKS.linkedin} 
                  target="_blank" 
@@ -64,6 +65,17 @@ const Sidebar: React.FC<SidebarProps> = ({ activeId, onNavigate }) => {
                >
                  <Github size={20} />
                </a>
+               
+               <div className="w-[1px] h-4 bg-slate-300 dark:bg-neutral-800"></div>
+
+               <button
+                 onClick={onOpenGame}
+                 className="text-slate-400 dark:text-neutral-600 hover:text-purple-500 dark:hover:text-purple-400 transition-colors"
+                 aria-label="System Idle Protocol"
+                 title="System Idle Protocol"
+               >
+                 <Gamepad2 size={20} />
+               </button>
           </div>
       </div>
     </div>
