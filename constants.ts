@@ -21,7 +21,7 @@ export const PROJECTS: SystemProject[] = [
     id: "second-order",
     title: "SecondOrder Simulation",
     philosophy: "In complex systems, first-order thinking is how you lose.",
-    description: "A next-generation business simulation engine that models the true physics of decision-making. Unlike naive financial models, SecondOrder simulates 2nd and 3rd order systemic feedback loops—competitor responses, talent flight, and brand erosion. Powered by Google Gemini 2.0 and Monte Carlo engines, it generates probability-weighted futures (P10/P50/P90) to quantify the survival rate of strategic decisions.",
+    description: "A next-generation business simulation engine that models the true physics of decision-making. Unlike naive financial models, SecondOrder simulates 2nd and 3rd order systemic feedback loops i.e. competitor responses, talent flight, and brand erosion. Powered by Google Gemini 2.0 and Monte Carlo engines, it generates probability-weighted futures (P10/P50/P90) to quantify the survival rate of strategic decisions.",
     capabilities: ["Monte Carlo Simulation", "MCTS Decision Trees", "Gemini 2.0 Integration"],
     techStack: ["Python", "FastAPI", "React", "NumPy"],
     repoUrl: "https://github.com/vibhorrrrr/SecondOrder"
@@ -57,7 +57,7 @@ export const PROJECTS: SystemProject[] = [
     id: "placebo-lab",
     title: "Placebo Causal Tests",
     philosophy: "A causal effect should disappear when the cause is fake.",
-    description: "A robust validation pipeline for causal models. This project stresses causal claims by running hundreds of placebo simulations—faking intervention dates and randomizing treatment groups—to construct an empirical null distribution. It ensures that reported effects are structural and not artifacts of noise or time trends.",
+    description: "A robust validation pipeline for causal models. This project stresses causal claims by running hundreds of placebo simulations by faking intervention dates and randomizing treatment groups to construct an empirical null distribution. It ensures that reported effects are structural and not artifacts of noise or time trends.",
     capabilities: ["Falsification Testing", "Bootstrap Resampling", "Statistical Robustness"],
     techStack: ["Python", "Pandas", "SciPy"],
     repoUrl: "https://github.com/vibhorrrrr/placebo_causal_lab"
