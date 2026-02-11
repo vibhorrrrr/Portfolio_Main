@@ -6,7 +6,7 @@ const ExperienceSection: React.FC = () => {
   const workHistory = [
     {
       role: "AI Research Engineer",
-      org: "Predixen.ai",
+      org: "GENAAR",
       location: "Remote",
       period: "2025.12 — Present",
       description: "Engineered the core architecture of a Stochastic Decision Support System, designed to model complex, non-linear market dynamics. Collaborated directly with technical leadership (Senior Researcher from Google DeepMind) to translate theoretical concepts from Game Theory and Causal Inference into a scalable, production-grade simulation engine.",
